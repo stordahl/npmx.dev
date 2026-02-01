@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import type { PackageDependenciesResponse } from '#shared/types'
-import { formatBytes } from '~/utils/formatters'
 
 definePageMeta({
   name: 'dependencies',
@@ -77,11 +76,6 @@ const devDependencies = computed(() => {
   if (!dependencies.value?.devDependencies) return []
   return Object.entries(dependencies.value.devDependencies).sort(([a], [b]) => a.localeCompare(b))
 })
-
-// Calculate total size
-const totalDirectSize = computed(() =>
-  directDependencies.value.reduce((sum, dep) => sum + (dep.size || 0), 0),
-)
 
 // SEO meta
 const pageTitle = computed(() => {
